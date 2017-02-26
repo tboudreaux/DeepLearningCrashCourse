@@ -63,6 +63,14 @@ model.fit(X_train, Y_train,
 score = model.evaluate(X_test, Y_test, verbose=0)
 print('Test score:', score) 
 
+# The predict_classes function outputs the highest probability class
+# according to the trained classifier for each input example.
+predicted_classes = model.predict_classes(X_test)
+
+# Check which items we got right / wrong
+correct_indices = np.nonzero(predicted_classes == y_test)[0]
+incorrect_indices = np.nonzero(predicted_classes != y_test)[0]
+
 # uncomment if you would like to see some results
 ## plt.figure(figsize=(10, 7))
 ## for i, correct in enumerate(correct_indices[:16]):
